@@ -250,35 +250,8 @@ export function ServiceMap() {
                     >
                       {/* Node Visual */}
                       <div className="relative group cursor-pointer flex items-center justify-center">
-                        {isHQ ? (
-                          // Premium HQ Design
-                          <>
-                            {/* Massive Pulsing Aura */}
-                            <div className="absolute inset-0 rounded-full blur-[25px] transition-all duration-700 bg-primary/30 scale-[12] animate-pulse" />
-                            
-                            {/* Multi-layered Radar Rings */}
-                            <div className="absolute h-[120px] w-[120px] rounded-full border border-primary/10 animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite]" />
-                            <div className="absolute h-20 w-20 rounded-full border border-primary/30 border-dashed animate-[spin_10s_linear_infinite]" />
-                            <div className="absolute h-14 w-14 rounded-full border-2 border-primary/50 animate-[spin_3s_linear_infinite_reverse] border-t-transparent border-b-transparent shadow-[0_0_15px_rgba(255,193,7,0.3)]" />
-                            
-                            {/* Tech Crosshairs */}
-                            <div className="absolute h-12 w-[1px] bg-primary/40" />
-                            <div className="absolute h-[1px] w-12 bg-primary/40" />
-
-                            {/* Glowing Hexagon Core Container */}
-                            <div 
-                              className="absolute h-8 w-8 bg-primary/20 backdrop-blur-sm flex items-center justify-center border border-primary/50 shadow-[0_0_20px_rgba(255,193,7,0.4)]"
-                              style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-                            >
-                               <div className="h-full w-full bg-primary/10 animate-pulse" />
-                            </div>
-                            
-                            {/* Bright Core Dot */}
-                            <div className="relative h-3.5 w-3.5 rounded-full bg-[#FBC600] shadow-[0_0_30px_rgba(255,193,7,1),0_0_10px_rgba(255,255,255,0.8)] z-10" />
-                          </>
-                        ) : (
-                          // Enhanced Branch Design
-                          <>
+                      
+                        
                             {/* Responsive Aura */}
                             <div className="absolute inset-0 rounded-full blur-[10px] transition-all duration-300 bg-primary/30 scale-[5] group-hover:bg-primary/60 group-hover:scale-[7]" />
                             
@@ -290,8 +263,7 @@ export function ServiceMap() {
                             
                             {/* Bright Core Dot */}
                             <div className="relative h-2 w-2 rounded-full bg-[#FBC600] shadow-[0_0_12px_rgba(255,193,7,0.9)] group-hover:bg-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.9)] transition-colors duration-300 z-10" />
-                          </>
-                        )}
+                       
                       </div>
 
                       {/* Enhanced Label */}
@@ -384,7 +356,7 @@ export function ServiceMap() {
 
                               <div className="mt-4 relative z-10 flex gap-2">
                                 <button className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-xs py-2 rounded shadow-[0_0_15px_rgba(255,193,7,0.3)] transition-colors uppercase tracking-wider">
-                                  Initialize Service
+                                  Comming Soon...
                                 </button>
                               </div>
                             </div>
