@@ -1,3 +1,5 @@
+
+import { CTA } from "@/components/CTA";
 import { FeaturedCars } from "@/components/FeaturedCars";
 import { Hero } from "@/components/Hero";
 import Inspection from "@/components/Inspection";
@@ -10,6 +12,7 @@ export default function Home() {
       <Hero />
       <FeaturedCars />
       <Inspection />
+      <CTA />
     </section>
   );
 }
