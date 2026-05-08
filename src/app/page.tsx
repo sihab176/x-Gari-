@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import Inspection from "@/components/Inspection";
 import { Navbar } from "@/components/Navbar";
+import { ServiceMap } from "@/components/ServiceMap";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <FeaturedCars />
       <Inspection />
+      <ServiceMap />
       <CTA />
       <Footer />
     </section>
