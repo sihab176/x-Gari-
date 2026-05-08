@@ -31,8 +31,8 @@ export function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
     >
       <nav
-        className={`mx-auto max-w-7xl flex items-center justify-between rounded-3xl md:rounded-2xl px-6 py-3 transition-all duration-500 ${
-          scrolled ? "bg-gray-400/25 backdrop-blur-xl shadow-2xl" : "glass"
+        className={`mx-auto max-w-7xl flex items-center justify-between rounded-3xl  px-6 py-3 transition-all duration-500 ${
+          scrolled ? "bg-gray-400/25 backdrop-blur-xl shadow-2xl border" : "glass"
         }`}
       >
         <motion.a
