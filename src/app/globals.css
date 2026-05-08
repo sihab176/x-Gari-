@@ -38,8 +38,7 @@ body {
   --card: oklch(0.17 0.008 270);
   --card-foreground: oklch(0.98 0 0);
 
-  /* --text-primary-foreground: oklch(0.85 0.18 90);
-  --text-primary-foreground-hover: oklch(0.9 0.2 90); */
+
 
   --popover: oklch(0.16 0.008 270);
   --popover-foreground: oklch(0.98 0 0);
@@ -51,7 +50,7 @@ body {
   --secondary-foreground: oklch(0.98 0 0);
 
   --muted: oklch(0.22 0.008 270);
-  --muted-foreground: oklch(0.7 0.01 270);
+  --muted-foreground: #7e8086;
 
   --accent: oklch(0.85 0.18 90);
   --accent-foreground: oklch(0.15 0.01 270);

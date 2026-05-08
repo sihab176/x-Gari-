@@ -31,8 +31,8 @@ export function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
     >
       <nav
-        className={`mx-auto max-w-7xl flex items-center justify-between rounded-2xl px-6 py-3 transition-all duration-500 ${
-          scrolled ? "glass-strong shadow-2xl" : "glass"
+        className={`mx-auto max-w-7xl flex items-center justify-between rounded-3xl md:rounded-2xl px-6 py-3 transition-all duration-500 ${
+          scrolled ? "bg-gray-400/25 backdrop-blur-xl shadow-2xl" : "glass"
         }`}
       >
         <motion.a
@@ -93,7 +93,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="lg:hidden mx-auto max-w-7xl mt-2 glass-strong rounded-2xl p-6 flex flex-col gap-4"
+            className="lg:hidden mx-auto max-w-7xl mt-2 bg-gray-400/15 backdrop-blur-3xl rounded-2xl p-6 flex flex-col gap-4"
           >
             {links.map((l) => (
               <a
