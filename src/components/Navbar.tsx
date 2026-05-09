@@ -1,7 +1,8 @@
 "use client"
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -42,15 +43,15 @@ export function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          <div className="relative flex h-9 w-9 text-black items-center justify-center rounded-full bg-linear-to-br from-[#ffbb00] to-[#c4b706] glow-gold">
-            <Zap
-              className="h-4 w-4 text-black"
-              strokeWidth={2.5}
+          <div className="h-12 w-32 flex items-center justify-center overflow-hidden">
+            <Image
+              src="/logo.png"
+              alt="XGari Logo"
+              width={100}
+              height={100}
+              className="w-full h-full object-contain scale-[2] origin-center"
             />
           </div>
-          <span className="text-xl font-bold tracking-tight">
-            X<span className="text-gradient-gold">Gari</span>
-          </span>
         </motion.a>
 
         <div className="hidden lg:flex items-center gap-10">
