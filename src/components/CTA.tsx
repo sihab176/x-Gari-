@@ -1,8 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/utils/translations";
 
 export function CTA() {
+  const { lang } = useLanguage();
+  const t = translations[lang].cta;
+
   return (
     <section id="contact" className="relative py-32 overflow-hidden">
       <div className="mx-auto max-w-6xl px-6">
@@ -20,30 +25,28 @@ export function CTA() {
           <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[400px] w-[700px] bg-primary/15 blur-[140px] rounded-full" />
 
           <div className="inline-flex items-center gap-2 rounded-full  bg-[#FCD202]/20  px-4 py-1.5 text-xs  mb-6">
-            <Sparkles className="h-3.5 w-3.5 text-[#FCD202]" /> Get started
-            today
+            <Sparkles className="h-3.5 w-3.5 text-[#FCD202]" /> {t.badge}
           </div>
           <h2 className="text-4xl sm:text-6xl font-bold tracking-tight max-w-3xl mx-auto">
-            Drive the future of{" "}
-            <span className="text-gradient-gold">car ownership.</span>
+            {t.title1}
+            <span className="text-gradient-gold">{t.title2}</span>
           </h2>
           <p className="mt-6 text-lg text-gray-500 max-w-xl mx-auto">
-            Verified cars. Nationwide service. Lifetime support — built for
-            Bangladesh, engineered for trust.
+            {t.subtitle}
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
               href="#cars"
               className="group inline-flex items-center gap-2 rounded-full text-black bg-linear-to-r from-[#FCD202] to-[#FCD202]/80 px-8 py-4 text-sm font-semibold text-primary-foreground glow-gold hover:scale-[1.04] transition-transform"
             >
-              Explore Verified Cars
+              {t.exploreBtn}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="#network"
               className="inline-flex items-center gap-2 rounded-full glass px-8 py-4 text-sm font-semibold text-foreground hover:bg-white/10 transition"
             >
-              Find a Service Center
+              {t.findService}
             </a>
           </div>
         </motion.div>

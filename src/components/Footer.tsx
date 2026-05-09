@@ -1,27 +1,34 @@
+"use client";
+
 // import { Zap, Instagram, Facebook, Twitter, Youtube } from "lucide-react";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { FiZap } from "react-icons/fi";
 import Image from "next/image";
-
-const cols = [
-  {
-    title: "Marketplace",
-    links: ["Verified Cars", "Sell Your Car", "Trade-in", "Financing"],
-  },
-  {
-    title: "Service",
-    title2: true,
-    links: [
-      "Service Centers",
-      "Book Inspection",
-      "Roadside Assist",
-      "Warranty",
-    ],
-  },
-  { title: "Company", links: ["About", "Press", "Careers", "Contact"] },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/utils/translations";
 
 export function Footer() {
+  const { lang } = useLanguage();
+  const t = translations[lang].footer;
+
+  const cols = [
+    {
+      title: t.marketplace,
+      links: [t.verifiedCars, t.sellCar, t.tradeIn, t.financing],
+    },
+    {
+      title: t.service,
+      title2: true,
+      links: [
+        t.serviceCenters,
+        t.bookInspection,
+        t.roadside,
+        t.warranty,
+      ],
+    },
+    { title: t.company, links: [t.about, t.press, t.careers, t.contact] },
+  ];
+
   return (
     <footer className="relative border-t border-white/5 pt-20 pb-10">
       <div className="mx-auto max-w-7xl px-6">
@@ -39,8 +46,7 @@ export function Footer() {
               </div>
             </a>
             <p className="text-sm text-gray-400 max-w-sm">
-              Bangladesh's trusted automotive ecosystem — verified cars,
-              nationwide service, transparent ownership.
+              {t.description}
             </p>
             <div className="flex gap-3">
               {[FaInstagram, FaFacebook, FaTwitter, FaYoutube].map(
@@ -82,17 +88,17 @@ export function Footer() {
 
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
           <div>
-            © {new Date().getFullYear()} XGari Bangladesh. All rights reserved.
+            © {new Date().getFullYear()} {t.rights}
           </div>
           <div className="flex gap-6">
             <a href="#" className="hover:text-primary">
-              Privacy
+              {t.privacy}
             </a>
             <a href="#" className="hover:text-primary">
-              Terms
+              {t.terms}
             </a>
             <a href="#" className="hover:text-primary">
-              Cookies
+              {t.cookies}
             </a>
           </div>
         </div>

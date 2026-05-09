@@ -3,7 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, ShieldCheck, CheckCircle2, Activity, Zap, Clock, Wifi, Users } from "lucide-react";
 import { useState, useEffect } from "react";
-
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/utils/translations";
 // Accurate projected coordinates for Bangladesh cities
 const centers = [
   {
@@ -104,6 +105,8 @@ const BD_PATH =
 
 export function ServiceMap() {
   const [active, setActive] = useState<string | null>(null);
+  const { lang } = useLanguage();
+  const t = translations[lang].services;
 
   return (
     <section id="network" className="relative py-32 overflow-hidden bg-[#0a0a0c]">
@@ -121,16 +124,14 @@ export function ServiceMap() {
         >
           <div className="inline-flex items-center gap-2 rounded-sm border border-primary/30 bg-primary/5 px-3 py-1.5 text-xs font-mono text-primary mb-6 shadow-[0_0_15px_rgba(255,193,7,0.15)] uppercase tracking-widest">
             <Activity className="h-3 w-3 animate-pulse" />
-            Infrastructure Status: Operational
+            {t.mapStatus}
           </div>
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white tracking-tight">
-            Nationwide <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200 drop-shadow-[0_0_15px_rgba(255,193,7,0.5)]">Service Network</span>
+            {t.mapTitle1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200 drop-shadow-[0_0_15px_rgba(255,193,7,0.5)]">{t.mapTitle2}</span>
           </h2>
           <p className="text-lg text-white/60 leading-relaxed max-w-2xl mx-auto">
-            Our AI-driven mobility OS tracks certified garage hubs in real-time. 
-            Experience unprecedented response times, transparent diagnostics, and 
-            seamless service across the entire country.
+            {t.mapDesc}
           </p>
         </motion.div>
 
@@ -315,7 +316,7 @@ export function ServiceMap() {
                                     )}
                                   </h3>
                                   <p className="text-[10px] uppercase tracking-widest text-primary/80 font-mono mt-1">
-                                    {isHQ ? "Central Operations" : "Regional Hub"} //{" "}
+                                    {isHQ ? t.hubHQ : t.hubBranch} //{" "}
                                     {c.id.toUpperCase()}
                                   </p>
                                 </div>
@@ -324,8 +325,7 @@ export function ServiceMap() {
                               <div className="pt-3 space-y-2 relative z-10 font-mono text-[11px] text-white/80">
                                 <div className="flex justify-between items-center">
                                   <span className="flex items-center gap-1.5">
-                                    <ShieldCheck className="h-3.5 w-3.5 text-primary" /> Verified
-                                    Garages
+                                    <ShieldCheck className="h-3.5 w-3.5 text-primary" /> {t.verifiedGarages}
                                   </span>
                                   <span className="text-white font-bold">
                                     {isHQ ? "12" : Math.floor(c.y % 4) + 2} Active
@@ -333,22 +333,22 @@ export function ServiceMap() {
                                 </div>
                                 <div className="flex justify-between items-center">
                                   <span className="flex items-center gap-1.5">
-                                    <Clock className="h-3.5 w-3.5 text-primary" /> 24/7 Support
+                                    <Clock className="h-3.5 w-3.5 text-primary" /> {t.support}
                                   </span>
                                   <span className="text-green-400 font-bold flex items-center gap-1">
                                     <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />{" "}
-                                    Online
+                                    {t.online}
                                   </span>
                                 </div>
                                 <div className="flex justify-between items-center">
                                   <span className="flex items-center gap-1.5">
-                                    <Users className="h-3.5 w-3.5 text-primary" /> Inspection Team
+                                    <Users className="h-3.5 w-3.5 text-primary" /> {t.inspectionTeam}
                                   </span>
-                                  <span className="text-green-400 font-bold">Deployed</span>
+                                  <span className="text-green-400 font-bold">{t.deployed}</span>
                                 </div>
                                 <div className="flex justify-between items-center border-t border-white/5 pt-2 mt-1">
                                   <span className="flex items-center gap-1.5 text-white/50">
-                                    Avg Response Time
+                                    {t.avgResponse}
                                   </span>
                                   <span className="text-primary font-bold">{c.response}</span>
                                 </div>
@@ -356,7 +356,7 @@ export function ServiceMap() {
 
                               <div className="mt-4 relative z-10 flex gap-2">
                                 <button className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-xs py-2 rounded shadow-[0_0_15px_rgba(255,193,7,0.3)] transition-colors uppercase tracking-wider">
-                                  Comming Soon...
+                                  {t.comingSoon}
                                 </button>
                               </div>
                             </div>

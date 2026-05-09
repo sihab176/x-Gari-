@@ -1,16 +1,22 @@
 "use client";
 import { motion } from "framer-motion";
 import { ShieldCheck, Cpu, Gauge, Battery, Wrench, Car } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/utils/translations";
 
-const checks = [
-  { icon: Cpu, label: "Engine & ECU", score: 98 },
-  { icon: Gauge, label: "Transmission", score: 95 },
-  { icon: Battery, label: "Battery & Electrical", score: 97 },
-  { icon: Wrench, label: "Suspension & Brakes", score: 94 },
-  { icon: Car, label: "Body & Paint", score: 96 },
-  { icon: ShieldCheck, label: "Safety Systems", score: 99 },
-];
 const Inspection = () => {
+  const { lang } = useLanguage();
+  const t = translations[lang].inspection;
+
+  const checks = [
+    { icon: Cpu, label: t.checks.engine, score: 98 },
+    { icon: Gauge, label: t.checks.transmission, score: 95 },
+    { icon: Battery, label: t.checks.battery, score: 97 },
+    { icon: Wrench, label: t.checks.suspension, score: 94 },
+    { icon: Car, label: t.checks.body, score: 96 },
+    { icon: ShieldCheck, label: t.checks.safety, score: 99 },
+  ];
+
   return (
     <section id="inspection" className="relative py-32 overflow-hidden">
       <div className="absolute inset-0 -z-10 grid-pattern opacity-20" />
@@ -20,23 +26,21 @@ const Inspection = () => {
         <div className="lg:col-span-5 space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium text-foreground/80">
             <ShieldCheck className="h-3.5 w-3.5 text-[#ffbb00]" />
-            150-Point Inspection
+            {t.badge}
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            Every car, <span className="text-gradient-gold">deep-scanned.</span>
+            {t.title1} <span className="text-gradient-gold">{t.title2}</span>
           </h2>
           <p className="text-lg text-gray-500">
-            From ECU diagnostics to paint thickness — XGari engineers run a
-            150-point inspection on every vehicle before it earns the verified
-            badge. The result: a transparent confidence score you can trust.
+            {t.subtitle}
           </p>
 
           <div className="grid grid-cols-2 gap-4 pt-4">
             {[
-              { k: "150", v: "Inspection points" },
-              { k: "12 min", v: "Digital report" },
-              { k: "AI", v: "Assisted scoring" },
-              { k: "100%", v: "Transparent" },
+              { k: "150", v: t.points },
+              { k: "12 min", v: t.report },
+              { k: "AI", v: t.ai },
+              { k: "100%", v: t.transparent },
             ].map((s) => (
               <div key={s.v} className="glass rounded-xl p-4">
                 <div className="text-2xl font-bold text-gradient-gold">{s.k}</div>
@@ -56,7 +60,7 @@ const Inspection = () => {
           <div className="relative glass-strong rounded-3xl p-8 sm:p-10">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <div className="text-xs text-muted-foreground">Live confidence score</div>
+                <div className="text-xs text-muted-foreground">{t.liveScore}</div>
                 <div className="mt-1 text-5xl font-bold text-gradient-gold">96.5</div>
               </div>
               <div className="relative h-28 w-28">

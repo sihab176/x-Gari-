@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ShieldCheck, Fuel, Gauge, Calendar, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/utils/translations";
 
 const cars = [
   {
@@ -43,6 +45,9 @@ const cars = [
 ];
 
 export function FeaturedCars() {
+  const { lang } = useLanguage();
+  const t = translations[lang].cars;
+
   return (
     <section id="cars" className="relative py-32 overflow-hidden">
       <div className="absolute inset-0 -z-10 grid-pattern opacity-20" />
@@ -51,17 +56,17 @@ export function FeaturedCars() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium text-foreground/80 mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              Verified Inventory
+              {lang === "en" ? "Verified Inventory" : "ভেরিফাইড ইনভেন্টরি"}
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
-              Curated <span className="text-gradient-gold">premium cars.</span>
+              {t.title}
             </h2>
           </div>
           <a
             href="#cars"
             className="inline-flex items-center gap-2 text-sm font-semibold text-foreground/80 hover:text-primary transition-colors"
           >
-            View all inventory <ArrowRight className="h-4 w-4" />
+            {t.viewAll} <ArrowRight className="h-4 w-4" />
           </a>
         </div>
 
@@ -109,7 +114,7 @@ export function FeaturedCars() {
                     {car.price}
                   </div>
                   <button className="inline-flex items-center gap-1 text-xs font-semibold text-foreground/80 hover:text-primary transition-colors">
-                    Details <ArrowRight className="h-3 w-3" />
+                    {t.viewDetails} <ArrowRight className="h-3 w-3" />
                   </button>
                 </div>
               </div>

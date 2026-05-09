@@ -2,7 +2,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, ShieldCheck, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
-
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/utils/translations";
 
 const slides = [
   {
@@ -43,6 +44,8 @@ const slides = [
 ];
 
 export function Hero() {
+  const { lang } = useLanguage();
+  const t = translations[lang].hero;
   const [active, setActive] = useState(0);
   useEffect(() => {
     const id = setInterval(
@@ -95,7 +98,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium text-foreground/80"
           >
             <Sparkles className="h-3.5 w-3.5 text-primary" />
-            Bangladesh's premium automotive ecosystem
+            {t.badge}
           </motion.div>
 
           <motion.h1
@@ -104,9 +107,9 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.1 }}
             className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight"
           >
-            Verified Cars.
+            {t.title1}
             <br />
-            <span className="text-gradient-gold">Trusted Service.</span>
+            <span className="text-gradient-gold">{t.title2}</span>
           </motion.h1>
 
           <motion.p
@@ -115,8 +118,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="max-w-xl text-lg text-muted-foreground"
           >
-            Bangladesh's trusted used car ecosystem with nationwide service
-            support, transparent ownership and a 150-point inspection promise.
+            {t.description}
           </motion.p>
 
           <motion.div
@@ -129,7 +131,7 @@ export function Hero() {
               href="#cars"
               className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-primary to-primary/80 px-7 py-4 text-sm font-semibold text-primary-foreground glow-gold transition-transform hover:scale-[1.04]"
             >
-              Explore Cars
+              {t.exploreBtn}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
@@ -137,7 +139,7 @@ export function Hero() {
               className="group inline-flex items-center gap-2 rounded-full glass px-7 py-4 text-sm font-semibold text-foreground hover:bg-white/10 transition"
             >
               <Calendar className="h-4 w-4" />
-              Book Inspection
+              {t.bookBtn}
             </a>
           </motion.div>
 
@@ -148,9 +150,9 @@ export function Hero() {
             className="grid grid-cols-3 gap-6 pt-6 border-t border-white/5 max-w-lg"
           >
             {[
-              { k: "12K+", v: "Verified Cars" },
-              { k: "48", v: "Service Centers" },
-              { k: "150", v: "Point Inspection" },
+              { k: "12K+", v: t.stats.cars },
+              { k: "48", v: t.stats.centers },
+              { k: "150", v: t.stats.points },
             ].map((s) => (
               <div key={s.v}>
                 <div className="text-2xl font-bold text-gradient-gold">
@@ -200,15 +202,15 @@ export function Hero() {
                 <div>
                   <div className="flex items-center gap-2 text-xs ">
                     <span className="inline-flex p-2 items-center gap-1 rounded-full bg-yellow-300/30 text-yellow-400 px-2 py-0.5  ">
-                      <ShieldCheck className="h-3 w-3" /> Verified
+                      <ShieldCheck className="h-3 w-3" /> {t.verified}
                     </span>
                     <span className="text-muted-foreground">
-                      {slide.status}
+                      {t.serviceActive}
                     </span>
                   </div>
                   <h3 className="mt-2 text-xl font-semibold">{slide.name}</h3>
                   <p className="text-sm text-muted-foreground mt-1">
-                    Confidence Score ·{" "}
+                    {t.score} ·{" "}
                     <span className="text-primary font-semibold">
                       {slide.score}/100
                     </span>
@@ -219,7 +221,7 @@ export function Hero() {
                     {slide.price}
                   </div>
                   <button className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-foreground/90 hover:text-primary">
-                    View <ArrowRight className="h-3 w-3" />
+                    {t.view} <ArrowRight className="h-3 w-3" />
                   </button>
                 </div>
               </div>
@@ -242,7 +244,7 @@ export function Hero() {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             className="hidden md:block absolute -left-6 top-10 bg-gray-400/15 backdrop-blur-sm rounded-2xl p-4 w-48"
           >
-            <div className="text-xs text-muted-foreground">Live Inspection</div>
+            <div className="text-xs text-muted-foreground">{t.liveInspection}</div>
             <div className="mt-1 text-lg font-bold">
               98<span className="text-sm text-muted-foreground">/100</span>
             </div>

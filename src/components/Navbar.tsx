@@ -1,21 +1,16 @@
 "use client"
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import Image from "next/image";
-
-const links = [
-  { label: "Home", href: "#home" },
-  { label: "Verified Cars", href: "#cars" },
-  { label: "Service Network", href: "#network" },
-  { label: "Inspection", href: "#inspection" },
-  { label: "About", href: "#story" },
-  { label: "Contact", href: "#contact" },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/utils/translations";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { lang, toggleLang } = useLanguage();
+  const t = translations[lang].nav;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -23,6 +18,15 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const links = [
+    { label: t.home, href: "#home" },
+    { label: t.cars, href: "#cars" },
+    { label: t.network, href: "#network" },
+    { label: t.inspection, href: "#inspection" },
+    { label: t.about, href: "#story" },
+    { label: t.contact, href: "#contact" },
+  ];
 
   return (
     <motion.header
@@ -32,7 +36,7 @@ export function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
     >
       <nav
-        className={`mx-auto max-w-7xl flex items-center justify-between rounded-3xl  px-6 py-3 transition-all duration-500 ${
+        className={`mx-auto max-w-7xl flex items-center justify-between rounded-3xl px-6 py-3 transition-all duration-500 ${
           scrolled ? "bg-gray-400/25 backdrop-blur-xl shadow-2xl border" : "glass"
         }`}
       >
@@ -69,23 +73,41 @@ export function Navbar() {
           ))}
         </div>
 
-        <motion.a
-          href="#cars"
-          className="hidden md:inline-flex text-black items-center gap-2 rounded-full bg-linear-to-br from-[#ffbb00] to-[#c4b706] px-5 py-2.5 text-sm font-semibold text-primary-foreground glow-gold hover:scale-[1.03] transition-transform"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5 }}
-        >
-          Explore Verified Cars
-        </motion.a>
+        <div className="hidden lg:flex items-center gap-4">
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 hover:bg-white/10 transition-colors text-sm font-medium"
+          >
+            <Globe className="h-4 w-4" />
+            {lang === "en" ? "BN" : "EN"}
+          </button>
+          <motion.a
+            href="#cars"
+            className="hidden md:inline-flex text-black items-center gap-2 rounded-full bg-linear-to-br from-[#ffbb00] to-[#c4b706] px-5 py-2.5 text-sm font-semibold text-primary-foreground glow-gold hover:scale-[1.03] transition-transform"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            {t.exploreBtn}
+          </motion.a>
+        </div>
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="lg:hidden p-2 rounded-lg text-foreground"
-          aria-label="Menu"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="lg:hidden flex items-center gap-4">
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-1 p-1.5 rounded-full border border-white/10 hover:bg-white/10 transition-colors text-sm font-medium"
+          >
+            <Globe className="h-4 w-4" />
+            {lang === "en" ? "BN" : "EN"}
+          </button>
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 rounded-lg text-foreground"
+            aria-label="Menu"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -110,7 +132,7 @@ export function Navbar() {
               href="#cars"
               className="rounded-full bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
             >
-              Explore Verified Cars
+              {t.exploreBtn}
             </a>
           </motion.div>
         )}
